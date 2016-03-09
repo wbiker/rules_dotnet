@@ -15,9 +15,3 @@ config_setting(
     name = "debug",
     values = {"compilation_mode": "dbg"},
 )
-
-filegroup(
-    name = "srcs",
-    srcs = glob(["**"]),
-    visibility = ["//tools:__pkg__"],
-)

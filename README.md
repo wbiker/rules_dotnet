@@ -23,7 +23,12 @@ might become especially valuable.
 Add the following to your `WORKSPACE` file to add the external repositories:
 
 ```python
-load("@bazel_tools//tools/build_defs/dotnet:csharp.bzl", "csharp_repositories")
+git_repository(
+    name = "io_bazel_rules_dotnet",
+    remote = "https://github.com/bazelbuild/rules_dotnet.git",
+    tag = "0.0.1",
+)
+load("@io_bazel_rules_dotnet//dotnet:csharp.bzl", "csharp_repositories")
 
 csharp_repositories()
 ```
