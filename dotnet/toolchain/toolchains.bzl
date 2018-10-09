@@ -45,26 +45,26 @@ NET_DEFAULT_VERSION="4.7.2"
 
 SDK_REPOSITORIES = {
     "4.2.3": {
-        "mono_darwin_amd64":      ("http://bazel-mirror.storage.googleapis.com/download.mono-project.com/archive/4.2.3/macos-10-x86/MonoFramework-MDK-4.2.3.4.macos10.xamarin.x86.tar.gz", 
+        "mono_darwin_amd64":      ("http://bazel-mirror.storage.googleapis.com/download.mono-project.com/archive/4.2.3/macos-10-x86/MonoFramework-MDK-4.2.3.4.macos10.xamarin.x86.tar.gz",
                                 "a7afb92d4a81f17664a040c8f36147e57a46bb3c33314b73ec737ad73608e08b"),
     },
 }
 
 CORE_SDK_REPOSITORIES = {
     "2.1.200": {
-        "core_windows_amd64":      ("https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-win-x64.zip", 
+        "core_windows_amd64":      ("https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-win-x64.zip",
                                 "f3c92c52d88364ac4359716e11e13b67f0e4ea256676b56334a4eb88c728e7fd"),
-        "core_linux_amd64":      ("https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-linux-x64.tar.gz", 
+        "core_linux_amd64":      ("https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-linux-x64.tar.gz",
                                 "58977b4b232f5fe97f9825340ce473cf1ec1bad76eb512fe6b5e2210c76c09de"),
-        "core_darwin_amd64":      ("https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-osx-x64.tar.gz", 
+        "core_darwin_amd64":      ("https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-osx-x64.tar.gz",
                                 "ac695c3319caf043e6b40861906cd4d396ba8922fd206332d2a778635667a2ba"),
     },
 }
 
 NET_ROSLYN_REPOSITORIES = {
     "2.8.2": {
-        "net_windows_amd64":      ("https://www.nuget.org/api/v2/package/Microsoft.Net.Compilers/2.8.2/", 
-                                "118bbad08ceff7ce174254d4a2fdf29bc21a96389b2f0a8c1d140db58f1bd395"),
+        "net_windows_amd64":      ("https://www.nuget.org/api/v2/package/Microsoft.Net.Compilers/2.8.2/",
+                                "48d0d13d8667e16ce150fbb7d804d12d9b9bca8bba9003eaccf1f105cbd427f6"),
     },
 }
 
@@ -199,4 +199,4 @@ def declare_toolchains():
                 name = toolchain["name"],
                 host = toolchain["host"],
             )
-  
+
