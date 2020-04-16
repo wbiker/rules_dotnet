@@ -31,13 +31,12 @@ char *GetLinkedMonoLauncher(const char *manifestDir)
 #ifdef _MSC_VER
     HANDLE h;
     DWORD ret;
-    BOOL b;
 #else
     int len;
 #endif
 #ifdef _MSC_VER
     sprintf(mono, "%s/mono.exe", manifestDir);
-    h = CreateFile(mono,                  // file to open
+    h = CreateFileA(mono,                  // file to open
                    GENERIC_READ,          // open for reading
                    FILE_SHARE_READ,       // share for reading
                    NULL,                  // default security
@@ -49,9 +48,9 @@ char *GetLinkedMonoLauncher(const char *manifestDir)
         printf("Could not open file %s (error %d\n)", mono, GetLastError());
         exit(-1);
     }
-    ret = GetFinalPathNameByHandle(h, linkedmono, sizeof(linkedmono), VOLUME_NAME_DOS);
+    ret = GetFinalPathNameByHandleA(h, linkedmono, sizeof(linkedmono), VOLUME_NAME_DOS);
     CloseHandle(h);
-    GetShortPathName(linkedmono, mono, sizeof(mono));
+    GetShortPathNameA(linkedmono, mono, sizeof(mono));
     strcpy(mono, mono + 4);
 #else
     sprintf(mono, "%s/mono", manifestDir);
