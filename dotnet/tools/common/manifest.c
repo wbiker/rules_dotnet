@@ -83,7 +83,7 @@ void CreateLinkIfNeeded(const char *target, const char *toCreate)
     DWORD error;
     DWORD flag;
 
-    if (!PathFileExists(target))
+    if (!PathFileExistsA(target))
     {
         printf("File %s does not exist\n", target);
         exit(-1);
@@ -100,7 +100,7 @@ void CreateLinkIfNeeded(const char *target, const char *toCreate)
     /* Try hard linking first (except mono.exe) */
     if (strstr(toCreate, "mono.exe") == NULL)
     {
-        result = CreateHardLink(toCreate, target, NULL);
+        result = CreateHardLinkA(toCreate, target, NULL);
         if (result)
             return;
         error = GetLastError();
@@ -193,8 +193,9 @@ void CreateLinkIfNeeded(const char *target, const char *toCreate)
 
 void LinkFiles(const char *manifestDir)
 {
+    manifestDir;
     return;
-    const struct Entry *p = g_Entries;
+    /* const struct Entry *p = g_Entries;
     const char *basename;
     char toCreate[64 * 1024];
 
@@ -210,14 +211,13 @@ void LinkFiles(const char *manifestDir)
 
         CreateLinkIfNeeded(p->Path, toCreate);
         p = p->Next;
-    }
+    } */
 }
 
 #ifdef _MSC_VER
 typedef struct _stat Stat;
 static void do_mkdir(const char *path)
 {
-    Stat st;
     DWORD error;
     wchar_t buffer[32 * 1024];
 
@@ -313,8 +313,9 @@ static void CreateDirTreeForFile(const char *path)
 
 void LinkFilesTree(const char *manifestDir)
 {
+    manifestDir;
     return;
-    const struct Entry *p = g_Entries;
+    /* const struct Entry *p = g_Entries;
     char toCreate[64 * 1024];
 
     while (p != NULL)
@@ -325,7 +326,7 @@ void LinkFilesTree(const char *manifestDir)
         CreateDirTreeForFile(toCreate);
         CreateLinkIfNeeded(p->Path, toCreate);
         p = p->Next;
-    }
+    } */
 }
 
 const char *GetManifestPath()
@@ -443,7 +444,7 @@ const char *GetManifestDir()
 
 void LinkHostFxr(const char *manifestDir)
 {
-    char buffer[64 * 1024], *q;
+    char buffer[64 * 1024], *q = NULL;
     const struct Entry *p = g_Entries;
 
     while (p != NULL)

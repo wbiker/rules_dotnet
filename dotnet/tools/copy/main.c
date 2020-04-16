@@ -21,7 +21,7 @@ const char *Exe = NULL;
 #ifdef _MSC_VER
 static int CopyMsc(const char *to, const char *from)
 {
-	BOOL r = CopyFile(from, to, FALSE);
+	BOOL r = CopyFileA(from, to, FALSE);
 	if (!r)
 	{
 		printf("copy: Failed to copy %s to %s. LastError: %d\n", from, to, GetLastError());
@@ -39,6 +39,7 @@ static int CopyLinux(const char *to, const char *from)
 /* One argument is expected: path to the launcher (to locate the manifest file) */
 int main(int argc, char *argv[], char *envp[])
 {
+    envp;
 	if (argc != 3)
 	{
 		printf("Usage: copy <to> <from>\n");

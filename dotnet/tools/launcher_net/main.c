@@ -21,7 +21,7 @@ const char *Exe = NULL;
 
 static void Execute(int argc, char *argv[], const char *manifestDir)
 {
-	char dotnet[64 * 1024], torun[64 * 1024], *p;
+	char torun[64 * 1024], *p;
 	char **newargv = (char **)malloc((argc + 1) * sizeof(char *));
 	//char *newargv[1024];
 	int i;
@@ -49,16 +49,18 @@ static void Execute(int argc, char *argv[], const char *manifestDir)
 			printf("argv[%d] = %s\n", i, newargv[i]);
 	}
 #ifdef _MSC_VER
-	exit(_spawnvp(_P_WAIT, newargv[0], newargv));
+	exit((int)_spawnvp(_P_WAIT, newargv[0], newargv));
 #else
 	_execvp(newargv[0], newargv);
 #endif
-	printf("Call failed with errnor %d\n", errno);
+
+    // printf("Call failed with errnor %d\n", errno);
 }
 
 /* One argument is expected: path to the launcher (to locate the manifest file) */
 int main(int argc, char *argv[], char *envp[])
 {
+    envp;
 	const char *manifestDir, *manifestPath;
 	char *p;
 
